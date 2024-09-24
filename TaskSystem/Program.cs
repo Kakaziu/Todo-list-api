@@ -1,4 +1,9 @@
 
+using Microsoft.EntityFrameworkCore;
+using TaskSystem.Data;
+using TaskSystem.Repositories.Interfaces;
+using TaskSystem.Repositories;
+
 namespace TaskSystem
 {
     public class Program
