@@ -14,6 +14,13 @@ namespace TaskSystem
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddEntityFrameworkSqlServer()
+               .AddDbContext<TaskSystemDBContext>(
+                   options => options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase"))
+               );
+
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
