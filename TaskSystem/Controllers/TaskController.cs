@@ -11,7 +11,7 @@ namespace TaskSystem.Controllers
     {
         private readonly ITaskRepository _taskRepository;
 
-        public TaskController(TaskRepository taskRepository) 
+        public TaskController(ITaskRepository taskRepository) 
         { 
             _taskRepository = taskRepository;
         }
@@ -26,7 +26,7 @@ namespace TaskSystem.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<TaskModel>> Show(int id)
         {
-            var task = _taskRepository.Show(id);
+            var task = await _taskRepository.Show(id);
 
             return Ok(task);
         }
