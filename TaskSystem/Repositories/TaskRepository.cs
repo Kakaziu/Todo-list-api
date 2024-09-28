@@ -16,12 +16,12 @@ namespace TaskSystem.Repositories
 
         public async Task<List<TaskModel>> Index()
         {
-            return await _dbContext.Tasks.ToListAsync();
+            return await _dbContext.Tasks.Include(x => x.User).ToListAsync();
         }
 
         public async Task<TaskModel> Show(int id)
         {
-            TaskModel? task = await _dbContext.Tasks.FirstOrDefaultAsync(x => x.Id == id);
+            TaskModel? task = await _dbContext.Tasks.Include(x => x.User).FirstOrDefaultAsync(x => x.Id == id);
 
             if (task == null) throw new Exception("Tarefa não encontrada");
 

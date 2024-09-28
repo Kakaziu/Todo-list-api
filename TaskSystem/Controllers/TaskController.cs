@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TaskSystem.Models;
 using TaskSystem.Repositories;
+using TaskSystem.Repositories.Interfaces;
 
 namespace TaskSystem.Controllers
 {
@@ -8,7 +9,7 @@ namespace TaskSystem.Controllers
     [ApiController]
     public class TaskController : Controller
     {
-        private readonly TaskRepository _taskRepository;
+        private readonly ITaskRepository _taskRepository;
 
         public TaskController(TaskRepository taskRepository) 
         { 
